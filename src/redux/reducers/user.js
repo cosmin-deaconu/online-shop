@@ -1,10 +1,14 @@
+const data = localStorage.getItem('user');
+const user = data ? JSON.parse(data) : {};
+
 const initialState = {
-    data: {},
+    data: user,
     loading: false,
     error: null
 };
 
 export function userReducer(state = initialState, action) {
+    
     switch (action.type) {
         case 'START_LOADING':
             return Object.assign({}, state, {

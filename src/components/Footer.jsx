@@ -18,31 +18,31 @@ const Footer = () => {
                 <div className="footer-group">
                     <h3 className="h5">Contactează-mă:</h3>
                     <p className="m-0">
-                        <a href="mailto:razvan.cirlugea@gmail.com" className="text-dark">
+                        <a href="mailto:cosmindeaconuc@gmail.com" className="text-dark">
                             <Mail className="mr-1 mb-1 footer-icon"/>
-                            razvan.cirlugea@gmail.com
+                            cosmindeaconuc@gmail.com
                         </a>
                     </p>
-                    <p className="m-0"><Phone className="mr-1 footer-icon"/>+40728998166</p>
+                    <p className="m-0"><Phone className="mr-1 footer-icon"/>+40758918292</p>
                 </div>
                 <div className="footer-group">
                     <h3 className="h5">Contactează-mă:</h3>
                     <p className="m-0">
-                        <a href="https://github.com/razvancir96" className="text-dark">
+                        <a href="https://github.com/cosmin-deaconu" className="text-dark">
                             <GitHub className="mr-1 mb-1 footer-icon"/>
-                            razvancir96
+                            Cosmin Deaconu
                         </a>
                     </p>
                     <p className="m-0">
-                        <a href="https://www.linkedin.com/in/razvancirlugea/" className="text-dark">
+                        <a href="https://www.linkedin.com/in/cosmin-deaconu/" className="text-dark">
                             <LinkedIn className="mr-1 footer-icon"/>
-                            razvancirlugea
+                            Cosmin Deaconu
                         </a>
                     </p>
                 </div>
             </div>
             <div className="text-center py-3">
-                &copy; Răzvan Cîrlugea, 2019
+                &copy; Cosmin Deaconu, 2020
             </div>
         </footer>
     );

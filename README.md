@@ -24,10 +24,10 @@ https://react-sirluggia-shop.herokuapp.com/
 
 ## Pentru a rula local proiectul
 
-1. `git clone https://github.com/razvancir96/react-sirluggia-shop.git`
+1. `git clone https://github.com/cosmin-deaconu/online-shop.git`
 
-2. `cd react-sirluggia-shop`
+2. `cd online-shop`
 
-3. `npm install` (posibil sa dureze)
+3. `npm install`
 
 4. `npm start`

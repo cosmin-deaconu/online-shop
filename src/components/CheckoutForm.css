@@ -1,7 +1,3 @@
-/* Stilizarile elementelor din Stripe */
-/* In fara de width, toata stilizarea este luata din exemplul dat in
-documentati oficiala(vezi link pe platforma). */
-
 .checkout-form .stripe-element {
     width: 300px;
     height: 40px;
