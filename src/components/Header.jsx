@@ -10,7 +10,7 @@ import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
 
 const Header = (props) => {
     getProductsNumber(props);
-    const {user, signOut } = props;
+    const {user, signOut, favoritesList } = props;
     return(
         <header className="border-bottom mb-1">
             <div className="container-fluid container-min-max-width d-flex justify-content-between align-items-center">
@@ -30,7 +30,7 @@ const Header = (props) => {
                         <div className="d-flex align-items-center">
                             <Link to="/favorites" className="d-flex mr-5 ml-5">
                                 <EmptyHeart className="ml-2" />
-                                <p className="ml-1 mb-0 text-dark">{ getProductsNumber(props) }</p>
+                                <p className="ml-1 mb-0 text-dark">{ favoritesList.length }</p>
                             </Link>
                             <Link to="/cart" className="d-flex">
                                 <ShoppingCart className="ml-2"/>
@@ -56,6 +56,7 @@ function getProductsNumber(props){
 function mapStateToProps(state) {
     return {
         productsList: state.cart.products,
+        favoritesList: state.favorites.products,
         user: state.user.data.user
     }
 }

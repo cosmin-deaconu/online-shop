@@ -2,6 +2,7 @@ import React from 'react';
 import './ProductItem.css';
 import { connect } from 'react-redux';
 import { addToCart } from '../redux/actions/cart';
+import { addToFavorite } from '../redux/actions/favorite';
 import { Link } from 'react-router-dom';
 import { ReactComponent as EmptyHeart } from '../assets/icons/empty-heart.svg';
 import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
@@ -13,7 +14,16 @@ const ProductItem = (props) => {
         <div className="product-item col-12 col-md-4 mb-3 d-flex flex-column align-items-center">
                 <button 
                     className="ml-auto mb-2 btn btn btn-link"
-                    onClick={(event) => asdfasfa(event)}
+                    onClick={() => props.addToFavorite({
+                        product: {
+                            id,
+                            name,
+                            price,
+                            currency,
+                            image,
+                            addedToFavorite: true
+                        }
+                    })}
                 >
                     <EmptyHeart className="mr-2"/>
                 </button>
@@ -40,13 +50,10 @@ const ProductItem = (props) => {
     );
 }
 
-function asdfasfa(event){
-    console.log('asfasfa', event)
-} 
-
 function mapDispatchToProps(dispatch) {
     return {
-        addToCart: (product) => dispatch(addToCart(product))
+        addToCart: (product) => dispatch(addToCart(product)),
+        addToFavorite: (product) => dispatch(addToFavorite(product))
     };
 }
 

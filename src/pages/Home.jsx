@@ -17,6 +17,7 @@ class Home extends React.Component{
     }
 
     render() {
+        console.log('asdasdasdasd', this.state.categories)
         return(
             <Layout>
                 <div className="container-fluid container-min-max-width">

@@ -7,6 +7,8 @@ import { addToCart } from '../redux/actions/cart';
 import { ReactComponent as EmptyHeart } from '../assets/icons/empty-heart.svg';
 import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
 import { ReactComponent as ShopCart } from '../assets/icons/shopping-cart.svg';
+import { addToFavorite } from '../redux/actions/favorite';
+import { removeFromFavorite } from '../redux/actions/favorite';
 
 class Product extends React.Component {
     constructor(props) {
@@ -32,9 +34,23 @@ class Product extends React.Component {
         this.setState({product: currentProduct});
     }
 
-    render() {
-        const { product} = this.state;
+    checkProductIsInFavoriteList(){
+        const { product, favoritesList} = this.state;
+        let productInFavoriteList = false;
+        if (favoritesList){
+            favoritesList.map(p => {
+                if (p.id === product.id) {
+                    productInFavoriteList = true;
+                }
+            })
+        }
 
+        return productInFavoriteList;
+    }
+
+    render() {
+        const { product } = this.state;
+        console.log('asfasfasfa', product);
         return (
             <Layout>
                 <div className="product-page content-min-height container-fluid container-min-max-width">
@@ -54,7 +70,8 @@ class Product extends React.Component {
                                             name: product.name,
                                             price: product.price,
                                             currency: product.currency,
-                                            image: product.image
+                                            image: product.image,
+                                            addedToFavorite: product.addedToFavorite
                                         }
                                     })
                                 }}
@@ -62,9 +79,30 @@ class Product extends React.Component {
                                 <ShopCart className="mr-2"/> Adaugă în coș
                             </button>
                             <div>
-                            <button className="btn btn-outline-info mb-4">
-                                <EmptyHeart className="mr-2"/> Adaugă la favorite
-                            </button>
+                            {!product.addedToFavorite ?
+                                (<button 
+                                    className="btn btn-outline-info mb-4"
+                                    onClick={() => {
+                                        this.props.addToFavorite({
+                                            product: {
+                                                id: product.id,
+                                                name: product.name,
+                                                price: product.price,
+                                                currency: product.currency,
+                                                image: product.image,
+                                                addedToFavorite: true
+                                            }
+                                        })
+                                    }}
+                                > 
+                                    <EmptyHeart className="mr-2"/> Adaugă la favorite
+                                </button>)
+                            : (<button 
+                                className="btn btn-outline-info mb-4"
+                                onClick={() => this.props.removeFromFavorites({id: product.id})}
+                            > 
+                                <LoveHeart className="mr-2"/> Elimina de la favorite
+                            </button>)}
                             </div>
                             
                             <p><span className="font-weight-bold">Mărime</span>: {product.size}</p>
@@ -73,7 +111,6 @@ class Product extends React.Component {
                             <p><span className="font-weight-bold">Brand</span>: {product.brand}</p>
                             <p className="font-weight-bold mb-1">Descriere:</p>
                             <p>{product.description}</p>
-                            <p>asdfasfas</p>
                         </div>
                     </div>
                 </div>
@@ -82,10 +119,18 @@ class Product extends React.Component {
     }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state){
     return {
-        addToCart: (payload) => dispatch(addToCart(payload))
+        favoritesList: state.favorites.products
     }
 }
 
-export default connect(null, mapDispatchToProps)(Product);
+function mapDispatchToProps(dispatch) {
+    return {
+        addToCart: (payload) => dispatch(addToCart(payload)),
+        addToFavorite: (product) => dispatch(addToFavorite(product)),
+        removeFromFavorites: (payload) => dispatch(removeFromFavorite(payload))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
