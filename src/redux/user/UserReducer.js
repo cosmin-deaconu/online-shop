@@ -1,3 +1,5 @@
+import { ACTIONS } from './UserConstants';
+
 const data = localStorage.getItem('user');
 const user = data ? JSON.parse(data) : {};
 
@@ -10,16 +12,16 @@ const initialState = {
 export function userReducer(state = initialState, action) {
     
     switch (action.type) {
-        case 'START_LOADING':
+        case ACTIONS.START_LOADING:
             return Object.assign({}, state, {
                 loading: true
             });
-        case 'UPDATE_USER_DATA':
+        case ACTIONS.UPDATE_USER_DATA:
             return Object.assign({}, state, {
                 data: action.data,
                 loading: false
             });
-        case 'UPDATE_USER_ERROR':
+        case ACTIONS.UPDATE_USER_ERROR:
             return Object.assign({}, state, {
                 error: action.error,
                 loading: false

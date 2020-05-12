@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import './Cart.css';
 import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
 import { ReactComponent as ShopCart } from '../assets/icons/shopping-cart.svg';
-import { addToCart } from '../redux/actions/cart';
-import { removeFromFavorite } from '../redux/actions/favorite';
+import { addToCart } from '../redux/cart/CartAction';
+import { removeFromFavorites } from '../redux/favorite/FavoritesAction';
 
 const Favorites = (props) => {
-
+    console.log('favorites', props);
     return(
         <Layout>
             <div className="cart-page content-min-height container-fluid container-min-max-width
@@ -78,7 +78,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         addToCart: (payload) => dispatch(addToCart(payload)),
-        removeFromFavorites: (payload) => dispatch(removeFromFavorite(payload))
+        removeFromFavorites: (payload) => dispatch(removeFromFavorites(payload))
     };
 }
 

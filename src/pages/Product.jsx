@@ -3,18 +3,22 @@ import Layout from '../components/Layout';
 import products from '../utils/products.json';
 import './Product.css';
 import { connect } from 'react-redux';
-import { addToCart } from '../redux/actions/cart';
+import { addToCart } from '../redux/cart/CartAction';
 import { ReactComponent as EmptyHeart } from '../assets/icons/empty-heart.svg';
 import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
 import { ReactComponent as ShopCart } from '../assets/icons/shopping-cart.svg';
-import { addToFavorite } from '../redux/actions/favorite';
-import { removeFromFavorite } from '../redux/actions/favorite';
+import { 
+    addToFavorites,
+    removeFromFavorites } 
+from '../redux/favorite/FavoritesAction';
 
 class Product extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: {}
+            product: {
+                addedToFavorites:false
+            }
         }
     }
 
@@ -34,23 +38,23 @@ class Product extends React.Component {
         this.setState({product: currentProduct});
     }
 
-    checkProductIsInFavoriteList(){
-        const { product, favoritesList} = this.state;
-        let productInFavoriteList = false;
-        if (favoritesList){
-            favoritesList.map(p => {
-                if (p.id === product.id) {
-                    productInFavoriteList = true;
-                }
-            })
-        }
+    checkProductIsInFavotitesList(props){
+        const { favoritesList } = props;
+        const { product } = this.state
+        let isFavorite = false;
 
-        return productInFavoriteList;
+        favoritesList.forEach((favoriteProduct) => {
+            const findResult = Number(favoriteProduct.id) === Number(product.id);
+    
+            if(findResult !== undefined && findResult === true)
+                isFavorite = true;
+        })
+    
+        return isFavorite;
     }
 
     render() {
         const { product } = this.state;
-        console.log('asfasfasfa', product);
         return (
             <Layout>
                 <div className="product-page content-min-height container-fluid container-min-max-width">
@@ -71,7 +75,6 @@ class Product extends React.Component {
                                             price: product.price,
                                             currency: product.currency,
                                             image: product.image,
-                                            addedToFavorite: product.addedToFavorite
                                         }
                                     })
                                 }}
@@ -79,18 +82,18 @@ class Product extends React.Component {
                                 <ShopCart className="mr-2"/> Adaugă în coș
                             </button>
                             <div>
-                            {!product.addedToFavorite ?
+                            {!this.checkProductIsInFavotitesList(this.props) ?
                                 (<button 
                                     className="btn btn-outline-info mb-4"
                                     onClick={() => {
-                                        this.props.addToFavorite({
+                                        this.props.addToFavorites({
                                             product: {
                                                 id: product.id,
                                                 name: product.name,
                                                 price: product.price,
                                                 currency: product.currency,
                                                 image: product.image,
-                                                addedToFavorite: true
+                                                addedToFavorites: true
                                             }
                                         })
                                     }}
@@ -128,8 +131,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch) {
     return {
         addToCart: (payload) => dispatch(addToCart(payload)),
-        addToFavorite: (product) => dispatch(addToFavorite(product)),
-        removeFromFavorites: (payload) => dispatch(removeFromFavorite(payload))
+        addToFavorites: (product) => dispatch(addToFavorites(product)),
+        removeFromFavorites: (payload) => dispatch(removeFromFavorites(payload))
     }
 }
 
