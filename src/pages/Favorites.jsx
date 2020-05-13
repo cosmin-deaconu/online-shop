@@ -9,7 +9,6 @@ import { addToCart } from '../redux/cart/CartAction';
 import { removeFromFavorites } from '../redux/favorite/FavoritesAction';
 
 const Favorites = (props) => {
-    console.log('favorites', props);
     return(
         <Layout>
             <div className="cart-page content-min-height container-fluid container-min-max-width
