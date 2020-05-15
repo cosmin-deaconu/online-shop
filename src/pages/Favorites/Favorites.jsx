@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './Cart.css';
-import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
-import { ReactComponent as ShopCart } from '../assets/icons/shopping-cart.svg';
-import { addToCart } from '../redux/cart/CartAction';
-import { removeFromFavorites } from '../redux/favorite/FavoritesAction';
+import './Favorites.css';
+import { ReactComponent as LoveHeart } from '../../assets/icons/love-heart.svg';
+import { ReactComponent as ShopCart } from '../../assets/icons/shopping-cart.svg';
+import { addToCart } from '../../redux/cart/CartAction';
+import { removeFromFavorites } from '../../redux/favorite/FavoritesAction';
 
 const Favorites = (props) => {
     return(

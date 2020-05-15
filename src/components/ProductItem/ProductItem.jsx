@@ -1,14 +1,14 @@
 import React from 'react';
 import './ProductItem.css';
 import { connect } from 'react-redux';
-import { addToCart } from '../redux/cart/CartAction';
+import { addToCart } from '../../redux/cart/CartAction';
 import { 
     addToFavorites, 
     removeFromFavorites } 
-from '../redux/favorite/FavoritesAction';
+from '../../redux/favorite/FavoritesAction';
 import { Link } from 'react-router-dom';
-import { ReactComponent as EmptyHeart } from '../assets/icons/empty-heart.svg';
-import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
+import { ReactComponent as EmptyHeart } from '../../assets/icons/empty-heart.svg';
+import { ReactComponent as LoveHeart } from '../../assets/icons/love-heart.svg';
 
 
 const ProductItem = (props) => {

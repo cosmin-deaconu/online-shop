@@ -3,8 +3,8 @@ import {
     StripeProvider,
     Elements
 } from 'react-stripe-elements';
-import Layout from '../components/Layout';
-import CheckoutForm from '../components/CheckoutForm';
+import Layout from '../../components/Layout/Layout';
+import CheckoutForm from '../../components/CheckoutForm/CheckoutForm';
 
 const Checkout = () => {
     return (

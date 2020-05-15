@@ -1,16 +1,16 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
-import Home from './pages/Home';
-import About from './pages/About';
-import Login from './pages/Login';
-import Page404 from './pages/Page404';
-import Category from './pages/Category';
-import Cart from './pages/Cart';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Login from './pages/Login/Login';
+import Page404 from './pages/404/Page404';
+import Category from './pages/Category/Category';
+import Cart from './pages/Cart/Cart';
 import './utils/utility-classes.css';
-import Checkout from './pages/Checkout';
-import Product from './pages/Product';
-import Favorites from './pages/Favorites';
-import TermsAndConditions from './pages/TermsAndConditions'
+import Checkout from './pages/Checkout/Checkout';
+import Product from './pages/Product/Product';
+import Favorites from './pages/Favorites/Favorites';
+import TermsAndConditions from './pages/TermsAndConditions/TermsAndConditions'
 
 function App() {
   return(

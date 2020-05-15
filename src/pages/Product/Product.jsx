@@ -1,16 +1,16 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import products from '../utils/products.json';
+import Layout from '../../components/Layout/Layout';
+import products from '../../utils/products.json';
 import './Product.css';
 import { connect } from 'react-redux';
-import { addToCart } from '../redux/cart/CartAction';
-import { ReactComponent as EmptyHeart } from '../assets/icons/empty-heart.svg';
-import { ReactComponent as LoveHeart } from '../assets/icons/love-heart.svg';
-import { ReactComponent as ShopCart } from '../assets/icons/shopping-cart.svg';
+import { addToCart } from '../../redux/cart/CartAction';
+import { ReactComponent as EmptyHeart } from '../../assets/icons/empty-heart.svg';
+import { ReactComponent as LoveHeart } from '../../assets/icons/love-heart.svg';
+import { ReactComponent as ShopCart } from '../../assets/icons/shopping-cart.svg';
 import { 
     addToFavorites,
     removeFromFavorites } 
-from '../redux/favorite/FavoritesAction';
+from '../../redux/favorite/FavoritesAction';
 
 class Product extends React.Component {
     constructor(props) {
